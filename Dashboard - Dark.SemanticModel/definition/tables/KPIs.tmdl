@@ -29,6 +29,10 @@ table KPIs
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 36b8e338-8649-4506-96b1-ef34dd148e1f
 
+	measure total = SUM('HS Parts'[30+])
+		formatString: 0
+		lineageTag: 8d235d9c-6209-438b-b774-57546b29514a
+
 	column Product
 		dataType: string
 		lineageTag: fb0d72ed-8753-405b-8f40-9a68207666a2
