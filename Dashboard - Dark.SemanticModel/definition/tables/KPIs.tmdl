@@ -33,6 +33,9 @@ table KPIs
 		formatString: 0
 		lineageTag: 8d235d9c-6209-438b-b774-57546b29514a
 
+	measure B2 = "B2"
+		lineageTag: 72b9033b-5cc2-49ee-8fb6-cbf8c08f7a46
+
 	column Product
 		dataType: string
 		lineageTag: fb0d72ed-8753-405b-8f40-9a68207666a2
