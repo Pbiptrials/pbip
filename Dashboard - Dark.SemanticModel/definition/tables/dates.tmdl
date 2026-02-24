@@ -1,0 +1,23 @@
+table dates
+	lineageTag: f6aefe9a-49cc-4f42-a1e7-d2ba4f55c45e
+
+	column Date
+		formatString: Short Date
+		lineageTag: c16f0c2a-4562-45e0-b825-5ae96a112d55
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 807b247b-6cbb-4034-8168-01343cd23324
+			defaultHierarchy: LocalDateTable_70191f12-dd1d-42c7-9409-712ff50c131d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dates = calculated
+		mode: import
+		source = CALENDAR("01-01-2026",TODAY())
+
+	annotation PBI_Id = e58d6912be834da6b0178ea3ee7b51af
+

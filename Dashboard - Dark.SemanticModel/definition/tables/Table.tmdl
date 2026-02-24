@@ -1,0 +1,97 @@
+table Table
+	lineageTag: d871782a-831c-4fd8-9d49-4b200c9b7755
+
+	column SN
+		dataType: int64
+		formatString: 0
+		lineageTag: ff26c693-9ea5-476b-86d1-79a6a20e3ac1
+		summarizeBy: none
+		sourceColumn: SN
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Part No'
+		dataType: string
+		lineageTag: e07b5a81-eed4-4ddf-a905-7ac5359f7a25
+		summarizeBy: none
+		sourceColumn: Part No
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dec
+		dataType: string
+		lineageTag: 6e268089-ebdb-40f1-acca-b969161ca8a2
+		summarizeBy: none
+		sourceColumn: Dec
+
+		annotation SummarizationSetBy = Automatic
+
+	column Onhand
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ba6f20a-c925-4f74-8d3c-b1494d90a661
+		summarizeBy: none
+		sourceColumn: Onhand
+
+		annotation SummarizationSetBy = Automatic
+
+	column 30+
+		dataType: int64
+		formatString: 0
+		lineageTag: 51b9ce7b-dd71-4981-b15b-ebe552c172c7
+		summarizeBy: none
+		sourceColumn: 30+
+
+		annotation SummarizationSetBy = Automatic
+
+	column 60+
+		dataType: int64
+		formatString: 0
+		lineageTag: e34ca8aa-c1cf-4669-933e-8ccd54ae40cc
+		summarizeBy: none
+		sourceColumn: 60+
+
+		annotation SummarizationSetBy = Automatic
+
+	column '6 M+'
+		dataType: int64
+		formatString: 0
+		lineageTag: a0963e90-e200-405f-aa23-a86f4b607e7a
+		summarizeBy: none
+		sourceColumn: 6 M+
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'LT %'
+		dataType: double
+		lineageTag: 470abc47-213b-420b-8ac1-140d8e6fb246
+		summarizeBy: none
+		sourceColumn: LT %
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Signal
+		dataType: double
+		lineageTag: 143990dd-2127-4ab8-acc8-29b39a89b6f8
+		summarizeBy: none
+		sourceColumn: Signal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Table = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("XZLLbttADEV/ZaA1IZDznqWspIXbugicoEBheKE6SipAtgzJWfTvOy9JbldDEtK95CEPh4IKKB6rR60FSYPcZ3VzbU7dbRih+gb75rVrel9lBFyB4YKFxCBIxBhymqsY0zJ9Ed8jHAoeDX5q4dAhCp9tn3ZsN7x+9G3SVRI4GpYSsmCzMrm5HpWJl4qtQdAWUfu7b94qis1va9h1p3E4DZfbOPR9O05JVzqQQmcTiYDJRPkXF4fcO829y6xPViBHSvo/hv7WvLds375/9I3nlDSNBtRRk7ImMzTbxFTNbNQCR2X60liy0WCl/6nrz/CwfcrwJaDlCT73yBIiocBJvsJ3ZV5KDIKDDg6bL1oIQsIw0MvYXKa3YTy3I+zb5rRMwA1IkvMeHAiTeFlAYRcP/T8kEx1qza0wFGfYt1M3hRHq3901/gPS+s2mHYs7/N5I8H8gcV46tgbBwEaDrwLRiQRp+3nzkv/WQMSzFL/TXer5Ki1b3qDpAoi68iMSCRXuqB7O17GdJt/2c3tj1TS151/9n7BPf+rW3R0LqfVoVBnOLmpSyPdVFVDzlcQFqs3zSjgp8Czl7s4vky2Ox78=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [SN = _t, #"Part No" = _t, Dec = _t, Onhand = _t, #"30+" = _t, #"60+" = _t, #"6 M+" = _t, #"LT %" = _t, Signal = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"SN", Int64.Type}, {"Part No", type text}, {"Dec", type text}, {"Onhand", Int64.Type}, {"30+", Int64.Type}, {"60+", Int64.Type}, {"6 M+", Int64.Type}, {"LT %", type number}, {"Signal", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

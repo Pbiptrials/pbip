@@ -1,0 +1,19 @@
+relationship AutoDetected_a889754a-c1eb-46d9-8290-e8147800de28
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Qty.Product
+	toColumn: KPIs.Product
+
+relationship 807b247b-6cbb-4034-8168-01343cd23324
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dates.Date
+	toColumn: LocalDateTable_70191f12-dd1d-42c7-9409-712ff50c131d.Date
+
+relationship AutoDetected_c2014955-9685-4860-950c-9082703cb4b4
+	fromColumn: Planner.Product
+	toColumn: KPIs.Product
+
+relationship AutoDetected_cf776403-4ea7-4d0e-ac3a-cc235f70f0ab
+	fromColumn: 'HS Parts'.60+
+	toColumn: Table.60+
+

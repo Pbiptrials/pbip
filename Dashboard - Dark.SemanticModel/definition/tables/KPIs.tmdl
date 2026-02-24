@@ -1,0 +1,79 @@
+table KPIs
+	lineageTag: 1313b31d-ab65-4d82-96ff-4461ef0fc4dc
+
+	measure CAC = CALCULATE(SUM(KPIs[Longterm Rate(%)]),KPIs[Product]="CAC")
+		lineageTag: 10441e78-9c5d-4aa6-8b14-1e5da64cfa1e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure LCD = CALCULATE(SUM(KPIs[Longterm Rate(%)]), KPIs[Product]="LCD")
+		lineageTag: 8271b764-72b9-4c5f-8362-7c7114131af4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Monitor = CALCULATE(SUM(KPIs[Longterm Rate(%)]), KPIs[Product]="Monitor")
+		lineageTag: 62594385-91f4-413b-aebd-72b69dc82842
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure RAC = CALCULATE(SUM(KPIs[Longterm Rate(%)]), KPIs[Product]="RAC")
+		lineageTag: 77a87a1c-694b-40be-a794-400a2c014527
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure REF = CALCULATE(SUM(KPIs[Longterm Rate(%)]), KPIs[Product]="REF")
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 4f4345fa-e6f4-4f4a-9468-690c05bfa380
+
+	measure WM = CALCULATE(SUM(KPIs[Longterm Rate(%)]), KPIs[Product]="WM")
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 36b8e338-8649-4506-96b1-ef34dd148e1f
+
+	column Product
+		dataType: string
+		lineageTag: fb0d72ed-8753-405b-8f40-9a68207666a2
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Longterm Inventory Amt (LOCAL)'
+		dataType: int64
+		formatString: 0
+		lineageTag: af10571a-ff29-4bd6-b6da-a3f56db86ada
+		summarizeBy: none
+		sourceColumn: Longterm Inventory Amt (LOCAL)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Inventory Amt(LOCAL)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 266c4e4d-57a0-4580-b640-ef447d52cb06
+		summarizeBy: none
+		sourceColumn: Inventory Amt(LOCAL)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Longterm Rate(%)'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 79894d65-04a7-4c2b-8855-bfb31bf8f990
+		summarizeBy: none
+		sourceColumn: Longterm Rate(%)
+
+		annotation SummarizationSetBy = Automatic
+
+	partition KPIs = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("NY2xDsMgDER/BTGfImPMYcYqarcsWTqg/P9vFEg62vfeXe/xfO0RMSjEYQ2NFuadQAMLWoEnny/ZJOV4ocf9VkakjmJlCTmDChPQy4OrL/x8fyZACKeQ7zwMmhVNkPjvb3UJ32MVQgSVY14Wbwbl3NCkD88xcP0A", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Product = _t, #"Longterm Inventory Amt (LOCAL)" = _t, #"Inventory Amt(LOCAL)" = _t, #"Longterm Rate(%)" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Product", type text}, {"Longterm Inventory Amt (LOCAL)", Int64.Type}, {"Inventory Amt(LOCAL)", Int64.Type}, {"Longterm Rate(%)", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

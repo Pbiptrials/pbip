@@ -1,0 +1,112 @@
+table Planner
+	lineageTag: 8699a35c-114b-4a29-9127-07f307960818
+
+	column Product
+		dataType: string
+		lineageTag: 5a73aa19-597c-460d-bc9d-28eaf6b062fb
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column Planner
+		dataType: string
+		lineageTag: 4f303d8e-7482-479b-ae1d-a55cfbda616d
+		summarizeBy: none
+		sourceColumn: Planner
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Inventory Qty'
+		dataType: double
+		lineageTag: 2bf92f1a-9c88-4f9a-9340-185ddbbcf98e
+		summarizeBy: sum
+		sourceColumn: Inventory Qty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Aging Qty'
+		dataType: double
+		lineageTag: a6e1be17-0ca0-4a4c-aa02-508c786adbd9
+		summarizeBy: sum
+		sourceColumn: Aging Qty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Longterm Inventory Amt'
+		dataType: double
+		lineageTag: 36589787-c926-422f-bbf6-a07033b84042
+		summarizeBy: sum
+		sourceColumn: Longterm Inventory Amt
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Inventory Amt'
+		dataType: double
+		lineageTag: 5ecce8af-0ea6-46bb-892b-a668d267af0f
+		summarizeBy: sum
+		sourceColumn: Inventory Amt
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Longterm Rate'
+		dataType: double
+		lineageTag: 0cb4c644-1148-422b-8d88-efdfe442a769
+		summarizeBy: sum
+		sourceColumn: Longterm Rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 30+
+		dataType: double
+		lineageTag: 9df6299c-1aac-432b-8272-46801cab39c3
+		summarizeBy: sum
+		sourceColumn: 30+
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 60+
+		dataType: double
+		lineageTag: f126d59b-67e6-495e-a7c6-e14830d542c7
+		summarizeBy: sum
+		sourceColumn: 60+
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 6M+
+		dataType: double
+		lineageTag: d6c36b34-2121-46c8-8d16-ead2fbaf846f
+		summarizeBy: sum
+		sourceColumn: 6M+
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Planner = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("fVXbblw3DPyVws+pQFK86fHEdeNNa6fwJi6MIP//Gx1SG9cGYvvBe7SroyGHM6Pv36+uj+urD1cPx+Pp/o+HA49sa5rbYJpYzeRlY5E4FrqW8KIhgoVQkuXEztrHa7CQ8LRVvwlNGfUKviTCZ1DK1Y8Pz3jfzrenv27Ot7VlyjLv3cLiWrsnmaw5qBfGPll4SK2UhoXoshlVnlKsUZBMq4FQqr0AOh/Xt6f7+j3QivsgrnJX5MwCTE/jQYbntEU2eXAdl8PNcRTP3Y+pNDfBBctaXb1A+Xa3e9FZ3Qw2bb6EuD6SAD1mnxAuPpO6ZvwXCg+LWk0n5Sb2Qpm/wnj68unmMiK8zzmiGpjoqjkER8DdqOwB7mafVXs4J/Wmyf1JP6t/6JPvj/PNzV39gMokGJVWqWpYDU/xRkCV7Dy0VSEusQJDazIHZyg7hV648meUGgim+D/Yq8mbOaeO4GrFV2EXstGCAkLHyj5IYy2F9GrBw8l4JfVcDPrrb833VjF/AfY8/Wmqzj2ZZmVlpg1ZdQjaCvfYIijtc6KmnvMamQuGsCZWyLTRHC22tk3zBdrjcfp4ezxWKwzyeqiwi9DWdI3dpAcPeywXDul2Jcc06FKk3/C8tE2NkutVSy9kYL6qhDU0elziRgqBN/uQCCyxvYE+gxccsC3Jo3xL1sdLWpf3C3Hc/In1cffl7+poYruPNKnaYBPUbmI98aWAIgFXW4mkpjxH+wsdcknF7P1Y2GB3R2uxtk5VWgaV99QTjgcitd4E1YuqjejkAQdzpewcAiDe08XL34+HZ8BPFy2qA3O0A5kgv9Gy16mihsirw9E8gXQAW9tqqCeiyd+PiI20pfhbQZkhR6P4yksUIURF+zWJEiPicLbSFPkUEdY9oDw8QuEW78XFxvv6+3E+P7WtKIYjMHV3UF8l7DBHuw46tEQuNl8gMWBDeC/ez42GeDx9Pp52lUiOseW67QhJtwxhJniS5ui0xYhy//1k7JdB8W9l0T8Px/3no6SXjLQrJbdbJbOTAYnQQZRhJXPd5U9IT5ePJiYGuEXO7+vqzahouGe6mGf2PdPi8gkB0D5OcNCEImXfVIMolabJu8nQhz8ed+fT1b5tYmmMuUUd5EyVZy14Dl3wb1+gyI9EvlpDLUBiqReIN+JhI53umrNAjGmOdL7wsmLk3B4MgpH3teZ9V6CeVmzdjfAc7wbfzIUN9PWqbxpW2cGJmz/rWsssQuYCXfBQwzA75IZVGwRaD56R1ip+KxJ+/Ac=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Product = _t, Planner = _t, #"Inventory Qty" = _t, #"Aging Qty" = _t, #"Longterm Inventory Amt" = _t, #"Inventory Amt" = _t, #"Longterm Rate" = _t, #"30+" = _t, #"60+" = _t, #"6M+" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Product", type text}, {"Planner", type text}, {"Inventory Qty", type number}, {"Aging Qty", type number}, {"Longterm Inventory Amt", type number}, {"Inventory Amt", type number}, {"Longterm Rate", type number},{"30+", type number},{"60+", type number},{"6M+", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

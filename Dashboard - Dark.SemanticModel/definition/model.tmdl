@@ -1,0 +1,25 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["KPIs","Qty","Table","Planner","HS Parts"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table KPIs
+ref table Qty
+ref table Table
+ref table dates
+ref table DateTableTemplate_36f5954f-9dc8-4ce5-b71c-9a8248ceffe1
+ref table LocalDateTable_70191f12-dd1d-42c7-9409-712ff50c131d
+ref table Planner
+ref table 'HS Parts'
+
+ref cultureInfo en-US
+

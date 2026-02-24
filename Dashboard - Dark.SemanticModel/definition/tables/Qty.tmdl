@@ -1,0 +1,51 @@
+table Qty
+	lineageTag: b6a65d10-202c-47fa-b06b-d1a5cff334da
+
+	column Product
+		dataType: string
+		lineageTag: 688155c6-6f39-4058-881c-073610b1689e
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column 30+
+		dataType: int64
+		formatString: 0
+		lineageTag: abe64e06-e31b-4067-82d5-960931115098
+		summarizeBy: sum
+		sourceColumn: 30+
+
+		annotation SummarizationSetBy = Automatic
+
+	column 60+
+		dataType: int64
+		formatString: 0
+		lineageTag: e336df89-3a10-4f89-ad17-7266b864c058
+		summarizeBy: sum
+		sourceColumn: 60+
+
+		annotation SummarizationSetBy = Automatic
+
+	column 6M+
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d5e6109-ac2b-4f62-a841-fe1aff230835
+		summarizeBy: sum
+		sourceColumn: 6M+
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Qty = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("NY6xDoAgDER/hTDfUGixMBqjm4uLA+H/f0OkMLV3fb1crf7YDw/vAmKCRna/UIIQjTUGcxuqfxaaBJHUmQgZecKczB/wedldCoS3CQuBDE590iDfexZQSJCVWsBqX8Igzj21fQ==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Product = _t, #"30+" = _t, #"60+" = _t, #"6M+" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Product", type text}, {"30+", Int64.Type}, {"60+", Int64.Type}, {"6M+",Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
