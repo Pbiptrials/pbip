@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
   "name": "896e701c70e09ef7fe12",
-  "displayName": "ES Planner",
+  "displayName": "ES Planner new",
   "displayOption": "ActualSize",
   "height": 950,
   "width": 1600,
