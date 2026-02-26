@@ -1,12 +1,6 @@
 table Table
 	lineageTag: d871782a-831c-4fd8-9d49-4b200c9b7755
 
-	measure 'Test Measure' =
-			
-			"This is a measure created while PBIP testing.
-			Author: Abhishek Dhiman"
-		lineageTag: 5e49fce7-f313-4b5a-9e2d-d15b3892b64e
-
 	column SN
 		dataType: int64
 		formatString: 0
